@@ -1,21 +1,20 @@
 variable "project" {
-    default = {}
+    type = string
 }
 
 variable "environment" {
-    default = {}
+    type = string
 }
 
 variable "sg_name" {
-    default = {}
+    type = string
+}
+
+variable "vpc_id" {
+    type = string
 }
 
 variable "sg_tags" {
-    default = {}
-}
-variable "common_tags" {
-    default = {}
-}
-variable "vpc_id" {
+    type = map
     default = {}
 }
