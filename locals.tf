@@ -1,3 +1,3 @@
 locals {
-    sg_names ="${var.project_name}-${var.enivronment}-${var.sg_name}"
+    sg_names ="${var.project_name}-${var.environment}-${var.sg_name}"
 }
