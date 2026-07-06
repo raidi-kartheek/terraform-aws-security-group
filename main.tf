@@ -1,6 +1,6 @@
 resource "aws_security_group" "main" {
-  name        = local.common_name
-  sg_description = "Allow traffic for ${var.sg_name} project ${var.project} in ${var.environment}"
+  name        = "${var.project}-${var.environment}-${var.sg_name}"
+  description = "Allow TLS inbound traffic for ${var.project} in ${var.environment} for component ${var.sg_name}"
   vpc_id      = var.vpc_id
 
   egress {
@@ -9,9 +9,12 @@ resource "aws_security_group" "main" {
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
   }
-
-  tags = merge (
+  
+  tags = merge(
     var.sg_tags,
-    local.common_tags
+    local.common_tags,
+    {
+        Name = "${var.project}-${var.environment}-${var.sg_name}"
+    }
   )
 }
